@@ -1,0 +1,57 @@
+{
+  "clean": {
+    "src": "dist",
+    "series": "before"
+  },
+  "css": {
+    "src": "src/css/**/*.scss",
+    "base": "src/css",
+    "dest": "dist/css",
+    "includePaths": [
+      "node_modules"
+    ],
+    "enableLinter": true,
+    "postcssProcessors": {
+      "cssnext": {
+        "warnForDuplicates": false
+      },
+      "autoprefixer": {},
+      "pxtorem": {
+        "rootValue": 16,
+        "unitPrecision": 5,
+        "propList": [ "*" ],
+        "selectorBlackList": [],
+        "replace": true,
+        "mediaQuery": true,
+        "minPixelValue": 2
+      },
+      "assets": {
+        "relative": true
+      }
+    }
+  },
+  "js": {
+    "src": "src/js/**/*.js",
+    "base": "src/js",
+    "dest": "dist/js",
+    "series": "after",
+    "entry": {
+      "main": "./main.js"
+    }
+  },
+  "images": {
+    "src": "images/**/*.+(png|jpg|jpeg|gif|bmp|svg)",
+    "base": "images",
+    "dest": "images"
+  },
+  "copy": {
+    "src": "src/fonts/**/*",
+    "base": "src/fonts",
+    "dest": "dist/fonts"
+  },
+  "watch": {
+    "tasks": [ "css", "copy", "images" ],
+    "series": "after",
+    "env": "dev"
+  }
+}
