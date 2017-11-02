@@ -1,5 +1,5 @@
 const path = require( 'path' );
-const { log } = require( 'gulp-util' );
+const { log, colors } = require( 'gulp-util' );
 const webpack = require( 'webpack' );
 const browserslist = require( 'browserslist' );
 const redent = require( 'redent' );
@@ -69,6 +69,10 @@ task.run( ( done ) => {
 			isProd ? new webpack.optimize.UglifyJsPlugin() : undefined
 		] )
 	};
+
+	if ( isDev ) {
+		log( `Webpack is running ${ colors.cyan( 'watch' )} mode.` );
+	}
 
 	webpack( webpackConfig, ( err, stats ) => {
 		log( `Webpack build complete.\n${ redent( stats.toString( webpackConfig.stats ), redentCount ) }` );
