@@ -14,7 +14,7 @@ before_install:
     - git config --global user.email "tech@xwp.co"
 
 install:
-    - yarn install eslint eslint-config-wordpress
+    - yarn install
 
 script:
     - yarn run eslint
