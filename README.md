@@ -29,7 +29,7 @@ Undercurrent comes with a default schema and tasks:
 Within the `package.json` of your project, you simply need to add a `script` to run Undercurrent:
 
 ```
-cross-env NODE_ENV=development gulp --gulpfile $(npm root)/xwp/undercurrent/src/index.js --cwd $(npm prefix)
+cross-env NODE_ENV=development gulp --gulpfile $(npm root)/undercurrent/src/index.js --cwd $(npm prefix)
 ```
 
 This script would run using the default schema and workflow; however, you can provide write your own workflow, schema and tasks.
