@@ -16,7 +16,7 @@ const pxtorem = require( 'postcss-pxtorem' );
 const autoprefixer = require( 'autoprefixer' );
 const assets = require( 'postcss-assets' );
 const Task = require( '../classes/class-task.js' );
-const { isDev, schema, root } = require( '../setup/config' );
+const { isDev, schema, root, pkg } = require( '../setup/config' );
 
 // Set the preprocessors.
 let postcssProcessors = {
@@ -42,7 +42,8 @@ task.run( () => {
 		.pipe( gulpif( isDev,
 			postcss( [
 				stylelint( {
-					configFile: path.resolve( __dirname, '../../.stylelintrc.js' )
+					configFile: path.resolve( __dirname, '../../.stylelintrc.js' ),
+					configOverrides: undefined !== pkg.stylelint ? pkg.stylelint : {}
 				} ),
 				reporter( {
 					clearAllMessages: true,
