@@ -28,11 +28,11 @@ let postcssProcessors = {
 
 const task = new Task ( 'css', [ 'src', 'dest', 'base' ], schema.css );
 
-task.run( ( done ) => {
+task.run( () => {
 	const redentCount = 11;
 	const positionPad = 8;
 
-	gulp.src( task.src, { base: task.base } )
+	return gulp.src( task.src, { base: task.base } )
 
 		// Caching and incremental building (progeny) in Gulp.
 		.pipe( gulpif( isDev, cache( task.cacheName ) ) )
@@ -84,6 +84,4 @@ task.run( ( done ) => {
 		.pipe( gulpif( isDev, sourcemaps.write( '' ) ) )
 
 		.pipe( gulp.dest( task.dest ) );
-
-	done();
 } );
