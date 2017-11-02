@@ -9,11 +9,11 @@ A slightly oppiniated but hightly configurable build system using Gulp and Webpa
 ## Installation
 
 ```
-yarn add @xwp/undercurrent
+yarn add undercurrent
 ```
 
 ```
-npm install @xwp/undercurrent
+npm install undercurrent
 ```
 
 ## Usage
