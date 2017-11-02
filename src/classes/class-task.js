@@ -67,12 +67,27 @@ const Task = class {
 	/**
 	 * Sets the current working path for the task.
 	 *
-	 * @param {String} current The current path localized to the workflow.
+	 * @param {Mixed} current The current path localized to the workflow.
 	 *
 	 * @return {String} The full path.
 	 */
 	currentWorkingPath( current ) {
-		return path.resolve( config.root, config.workflow.cwd, current );
+		let cwp = [];
+
+		if ( Array.isArray( current ) ) {
+			for ( let c of current ) {
+				if ( c.includes( '!' ) ) {
+					cwp.push( `!${ path.resolve( config.root, config.workflow.cwd, c.replace( '!', '' ) ) }` );
+				} else {
+					cwp.push( path.resolve( config.root, config.workflow.cwd, c ) );
+				}
+
+			}
+		} else {
+			cwp = path.resolve( config.root, config.workflow.cwd, current );
+		}
+
+		return cwp;
 	}
 
 	/**
