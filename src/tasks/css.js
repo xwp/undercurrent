@@ -16,7 +16,7 @@ const pxtorem = require( 'postcss-pxtorem' );
 const autoprefixer = require( 'autoprefixer' );
 const assets = require( 'postcss-assets' );
 const Task = require( '../classes/class-task.js' );
-const { isDev, schema, root } = require( '../setup/config' );
+const { isDev, schema, root, pkg } = require( '../setup/config' );
 
 // Set the preprocessors.
 let postcssProcessors = {
@@ -28,11 +28,11 @@ let postcssProcessors = {
 
 const task = new Task ( 'css', [ 'src', 'dest', 'base' ], schema.css );
 
-task.run( ( done ) => {
+task.run( () => {
 	const redentCount = 11;
 	const positionPad = 8;
 
-	gulp.src( task.src, { base: task.base } )
+	return gulp.src( task.src, { base: task.base } )
 
 		// Caching and incremental building (progeny) in Gulp.
 		.pipe( gulpif( isDev, cache( task.cacheName ) ) )
@@ -42,7 +42,8 @@ task.run( ( done ) => {
 		.pipe( gulpif( isDev,
 			postcss( [
 				stylelint( {
-					configFile: path.resolve( __dirname, '../../.stylelintrc.js' )
+					configFile: path.resolve( __dirname, '../../.stylelintrc.js' ),
+					configOverrides: undefined !== pkg.stylelint ? pkg.stylelint : {}
 				} ),
 				reporter( {
 					clearAllMessages: true,
@@ -84,6 +85,4 @@ task.run( ( done ) => {
 		.pipe( gulpif( isDev, sourcemaps.write( '' ) ) )
 
 		.pipe( gulp.dest( task.dest ) );
-
-	done();
 } );
