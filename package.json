@@ -1,13 +1,12 @@
 {
   "name": "undercurrent",
   "version": "0.1.0",
-  "description": "",
+  "description": "Common tools to facilitate frontend development and testing.",
   "main": "src/index.js",
   "scripts": {
     "eslint": "$(npm bin)/eslint src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
   "license": "MIT",
   "repository": {
     "type": "git",
