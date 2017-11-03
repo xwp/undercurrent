@@ -31,7 +31,7 @@ task.run( ( done ) => {
 		devtool: isProd ? 'source-map' : 'inline-source-map',
 
 		resolveLoader: {
-			modules: [ path.resolve( __dirname, '../../node_modules' ) ]
+			modules: [ path.resolve( __dirname, '../../../' ) ]
 		},
 
 		watch: isDev,
@@ -45,7 +45,7 @@ task.run( ( done ) => {
 						loader: 'babel-loader',
 						options: {
 							presets: [ [
-								path.resolve( __dirname, '../../node_modules/', 'babel-preset-env' ),
+								path.resolve( __dirname, '../../../', 'babel-preset-env' ),
 								{
 									targets: {
 										browsers: browserslist()
