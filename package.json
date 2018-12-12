@@ -1,6 +1,6 @@
 {
   "name": "undercurrent",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Common tools to facilitate frontend development and testing.",
   "main": "src/index.js",
   "scripts": {
@@ -74,7 +74,7 @@
     "eslint-config-wordpress": "^2.0.0",
     "eslint-loader": "^1.9.0",
     "eslint-plugin-compat": "^1.0.4",
-    "gulp": "next",
+    "gulp": "4.0.0",
     "gulp-cached": "^1.1.1",
     "gulp-if": "^2.0.2",
     "gulp-imagemin": "^4.1.0",
