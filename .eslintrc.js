@@ -1,7 +1,7 @@
 /* eslint-disable no-magic-numbers */
 
 module.exports = {
-	extends: 'wordpress',
+	extends: [ "plugin:@wordpress/eslint-plugin/esnext" ],
 
 	parserOptions: {
 		'ecmaVersion': 8,
