@@ -38,8 +38,8 @@ task.run( () => {
 		.pipe( gulpif( isDev, cache( task.cacheName ) ) )
 		.pipe( gulpif( isDev, progeny() ) )
 
-		// Lint when in development mode.
-		.pipe( gulpif( isDev,
+		// Lint when enableLinter is on.
+		.pipe( gulpif( task.settings.enableLinter,
 			postcss( [
 				stylelint( {
 					configFile: path.resolve( __dirname, '../../.stylelintrc.js' ),
