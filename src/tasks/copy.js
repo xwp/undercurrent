@@ -4,7 +4,7 @@ const cache = require( 'gulp-cached' );
 const Task = require( '../classes/class-task.js' );
 const { isDev, schema } = require( '../setup/config' );
 
-const task = new Task ( 'copy', [ 'src', 'dest', 'base' ], schema.copy );
+const task = new Task( 'copy', [ 'src', 'dest', 'base' ], schema.copy );
 
 task.run( () => {
 	return gulp.src( task.src, { base: task.base } )

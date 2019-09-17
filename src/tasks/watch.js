@@ -3,7 +3,7 @@ const gulp = require( 'gulp' );
 const Task = require( '../classes/class-task.js' );
 const { schema, root, workflow } = require( '../setup/config' );
 
-const task = new Task ( 'watch', [], schema.watch );
+const task = new Task( 'watch', [], schema.watch );
 
 task.run( () => {
 	task.settings.tasks.map( ( name ) => {

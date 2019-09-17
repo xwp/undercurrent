@@ -4,11 +4,10 @@ const { log, colors } = require( 'gulp-util' );
 const config = require( '../setup/config' );
 
 const Task = class {
-
 	/**
 	 * Constructor.
 	 *
-	 * @param {String} name The task name.
+	 * @param {string} name The task name.
 	 * @param {Array} paths The required paths.
 	 * @param {Object} settings The task settings (defined in the schema).
 	 */
@@ -18,7 +17,7 @@ const Task = class {
 
 		this.paths = {
 			required: paths,
-			invalid: []
+			invalid: [],
 		};
 
 		this.series = false;
@@ -29,12 +28,11 @@ const Task = class {
 	 *
 	 * @param {Function} callback The callback function to run.
 	 *
-	 * @returns {Void} Fires the callback or prints a message.
+	 * @return {void} Fires the callback or prints a message.
 	 */
 	run( callback ) {
-
 		// First validate paths exist.
-		if ( this.paths.required.every( p => this.valadatePaths( p ) ) ) {
+		if ( this.paths.required.every( ( p ) => this.valadatePaths( p ) ) ) {
 			if ( this.series ) {
 				gulp.task( this.name, gulp.series( this.series ) );
 			} else {
@@ -51,9 +49,9 @@ const Task = class {
 	/**
 	 * Validates the required paths.
 	 *
-	 * @param {String} p The required element.
+	 * @param {string} p The required element.
 	 *
-	 * @return {Boolean} False if the path is not defined, otherwise true.
+	 * @return {boolean} False if the path is not defined, otherwise true.
 	 */
 	valadatePaths( p ) {
 		if ( undefined === this.settings[ p ] ) {
@@ -69,7 +67,7 @@ const Task = class {
 	 *
 	 * @param {Mixed} current The current path localized to the workflow.
 	 *
-	 * @return {String} The full path.
+	 * @return {string} The full path.
 	 */
 	currentWorkingPath( current ) {
 		let cwp = [];
@@ -81,7 +79,6 @@ const Task = class {
 				} else {
 					cwp.push( path.resolve( config.root, config.workflow.cwd, c ) );
 				}
-
 			}
 		} else {
 			cwp = path.resolve( config.root, config.workflow.cwd, current );
@@ -109,7 +106,7 @@ const Task = class {
 	 * workflow current working directory.
 	 */
 	get base() {
-		return undefined === this.settings.base ? '' : path.join( config.workflow.cwd, this.settings.base ) ;
+		return undefined === this.settings.base ? '' : path.join( config.workflow.cwd, this.settings.base );
 	}
 
 	/**

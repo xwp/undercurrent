@@ -23,10 +23,10 @@ let postcssProcessors = {
 	cssnext,
 	pxtorem,
 	autoprefixer,
-	assets
+	assets,
 };
 
-const task = new Task ( 'css', [ 'src', 'dest', 'base' ], schema.css );
+const task = new Task( 'css', [ 'src', 'dest', 'base' ], schema.css );
 
 task.run( () => {
 	const redentCount = 11;
@@ -43,12 +43,12 @@ task.run( () => {
 			postcss( [
 				stylelint( {
 					configFile: path.resolve( __dirname, '../../.stylelintrc.js' ),
-					configOverrides: undefined !== pkg.stylelint ? pkg.stylelint : {}
+					configOverrides: undefined !== pkg.stylelint ? pkg.stylelint : {},
 				} ),
 				reporter( {
 					clearAllMessages: true,
 					formatter: ( input ) => {
-						let output = `${ colors.yellow( 'WARNING in', input.source.replace( root, '.' ) )}\n\n`;
+						let output = `${ colors.yellow( 'WARNING in', input.source.replace( root, '.' ) ) }\n\n`;
 
 						output += `${ colors.yellow( input.source ) }\n`;
 
@@ -59,8 +59,8 @@ task.run( () => {
 						}
 
 						return redent( `\n${ output }\n`, redentCount );
-					}
-				} )
+					},
+				} ),
 			], { syntax: scss } )
 		) )
 
@@ -68,7 +68,7 @@ task.run( () => {
 		.pipe( gulpif( isDev, sourcemaps.init() ) )
 		.pipe( sass( {
 			includePaths: schema.css.includePaths || [],
-			outputStyle: isDev ? 'expanded' : 'compressed'
+			outputStyle: isDev ? 'expanded' : 'compressed',
 		} ).on( 'error', sass.logError ) )
 		.pipe( gulpif( schema.css.postcssProcessors, postcss( () => {
 			const processors = [];

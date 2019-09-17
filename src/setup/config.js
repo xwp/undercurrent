@@ -17,7 +17,7 @@ const config = {
 	root: cwd,
 	env: process.env.NODE_ENV,
 	isDev: /^dev/ig.test( process.env.NODE_ENV ),
-	isProd: /^prod/ig.test( process.env.NODE_ENV )
+	isProd: /^prod/ig.test( process.env.NODE_ENV ),
 };
 
 module.exports = config;
