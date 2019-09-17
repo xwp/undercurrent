@@ -9,6 +9,8 @@ task.run( () => {
 	task.settings.tasks.map( ( name ) => {
 		if ( schema.hasOwnProperty( name ) ) {
 			gulp.watch( path.resolve( root, workflow.cwd, schema[ name ].src ), gulp.parallel( name ) );
+			return true;
 		}
+		return false;
 	} );
 } );
