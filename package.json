@@ -5,6 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "eslint": "$(npm bin)/eslint src",
+    "eslint-fix": "$(npm bin)/eslint --fix src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "license": "MIT",
