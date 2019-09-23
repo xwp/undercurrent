@@ -10,7 +10,7 @@ const { workflow } = require( 'yargs' ).argv;
 
 let flow = {
 	cwd: './assets',
-	name: 'default'
+	name: 'default',
 };
 
 // Check if pkg.workflows is defined, an object and has workflow as object key.

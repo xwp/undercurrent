@@ -7,7 +7,7 @@ const { removeEmpty } = require( 'webpack-config-utils' );
 const Task = require( '../classes/class-task.js' );
 const { isDev, isProd, schema, root } = require( '../setup/config' );
 
-const task = new Task ( 'js', [ 'src', 'dest', 'base', 'entry' ], schema.js );
+const task = new Task( 'js', [ 'src', 'dest', 'base', 'entry' ], schema.js );
 
 task.run( ( done ) => {
 	const redentCount = 11;
@@ -19,19 +19,19 @@ task.run( ( done ) => {
 		output: {
 			filename: '[name].js',
 			path: path.resolve( root, task.dest ),
-			pathinfo: isDev
+			pathinfo: isDev,
 		},
 
 		stats: {
 			colors: true,
 			modules: true,
-			version: false
+			version: false,
 		},
 
 		devtool: isProd ? 'source-map' : 'inline-source-map',
 
 		resolveLoader: {
-			modules: [ path.resolve( __dirname, '../../../' ) ]
+			modules: [ path.resolve( __dirname, '../../../' ) ],
 		},
 
 		watch: isDev,
@@ -48,30 +48,30 @@ task.run( ( done ) => {
 								path.resolve( __dirname, '../../../', 'babel-preset-env' ),
 								{
 									targets: {
-										browsers: browserslist()
-									}
-								}
-							] ]
-						}
+										browsers: browserslist(),
+									},
+								},
+							] ],
+						},
 					}, {
 						loader: 'eslint-loader',
 						options: {
 							failOnError: Boolean( isProd ),
 							emitWarning: true,
-							configFile: path.resolve( __dirname, '../../.eslintrc.js' )
-						}
-					} ]
-				}
-			]
+							configFile: path.resolve( __dirname, '../../.eslintrc.js' ),
+						},
+					} ],
+				},
+			],
 		},
 
 		plugins: removeEmpty( [
-			isProd ? new webpack.optimize.UglifyJsPlugin() : undefined
-		] )
+			isProd ? new webpack.optimize.UglifyJsPlugin() : undefined,
+		] ),
 	};
 
 	if ( isDev ) {
-		log( `Webpack is running ${ colors.cyan( 'watch' )} mode.` );
+		log( `Webpack is running ${ colors.cyan( 'watch' ) } mode.` );
 	}
 
 	webpack( webpackConfig, ( err, stats ) => {
@@ -82,7 +82,6 @@ task.run( ( done ) => {
 		}
 
 		if ( err || stats.hasErrors() ) {
-
 			// TODO: Log errors when Webpack fails.
 			done();
 		}
