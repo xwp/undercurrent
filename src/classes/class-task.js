@@ -65,7 +65,7 @@ const Task = class {
 	/**
 	 * Sets the current working path for the task.
 	 *
-	 * @param {Mixed} current The current path localized to the workflow.
+	 * @param {string} current The current path localized to the workflow.
 	 *
 	 * @return {string} The full path.
 	 */
