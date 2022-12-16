@@ -61,7 +61,7 @@ task.run( () => {
 						return redent( `\n${ output }\n`, redentCount );
 					},
 				} ),
-			], { syntax: scss } )
+			], { syntax: scss } ),
 		) )
 
 		// Actual SASS compilation.
