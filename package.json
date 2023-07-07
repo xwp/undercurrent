@@ -89,7 +89,7 @@
     "postcss-reporter": "^6.0.1",
     "postcss-scss": "^2.0.0",
     "redent": "^3.0.0",
-    "stylelint": "^13.2.0",
+    "stylelint": "^15.10.1",
     "stylelint-config-xwp": "github:xwp/stylelint-config-xwp",
     "webpack": "^4.41.6",
     "webpack-config-utils": "^2.3.1",
